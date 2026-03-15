@@ -63,7 +63,6 @@ function App() {
   // }
 
   async function putData() {
-    // var users = [];
     const snapshot = await get(ref(db, "users"));
     const dat = snapshot.val();
     // console.log(dat.length);
