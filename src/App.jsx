@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import { getDatabase, ref, set, get } from "firebase/database";
+import { getDatabase, ref, get } from "firebase/database";
 import app from "./db";
 
 
@@ -26,24 +26,49 @@ function App() {
     }));
   }
 
+  //==========================ADD A NEW USER=========================//
+  // async function putData() {
+  //   const snapshot = await get(ref(db, "meta/userCnt"));
+  //   var id = snapshot.exists() ? snapshot.val() : "000";
+
+  //   await set(ref(db, `users/${id}`), {
+  //     name: creds.username,
+  //     password: creds.password
+  //   });
+
+  //   // updateUserCnt(String(Number(userCnt) + 1).padStart(userCnt.length, "0"));
+  //   id = String(Number(id) + 1).padStart(id.length, "0");
+  //   await set(ref(db, "meta/userCnt"), id);
+
+  //   await setCreds({
+  //     username: "",
+  //     password: ""
+  //   });
+  // };
+
+  //=====================UPDAT THE DATA====================//
+
+  // async function putData() {
+
+  //   const id = "001";
+  //   await update(ref(db, `users/${id}`), {
+  //     name: "Hell as F"
+  //   });
+
+  //   setCreds({
+  //     username: "",
+  //     password: ""
+  //   });
+
+  // }
+
   async function putData() {
-    const snapshot = await get(ref(db, "meta/userCnt"));
-    var id = snapshot.exists() ? snapshot.val() : "000";
-
-    await set(ref(db, `users/${id}`), {
-      name: creds.username,
-      password: creds.password
-    });
-
-    // updateUserCnt(String(Number(userCnt) + 1).padStart(userCnt.length, "0"));
-    id = String(Number(id) + 1).padStart(id.length, "0");
-    await set(ref(db, "meta/userCnt"), id);
-
-    await setCreds({
-      username: "",
-      password: ""
-    });
-  };
+    // var users = [];
+    const snapshot = await get(ref(db, "users"));
+    const dat = snapshot.val();
+    // console.log(dat.length);
+    console.log(Object.keys(dat).length);
+  }
 
   return (
     <>
