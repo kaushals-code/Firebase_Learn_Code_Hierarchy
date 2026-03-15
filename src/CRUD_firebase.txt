@@ -1,0 +1,23 @@
+C - Create
+R - Read
+U - Update
+D - Delete
+
+C - Create ->
+//   await set(ref(db, `users/${id}`), {
+//     name: creds.username,
+//     password: creds.password
+//   });
+
+R - Read
+const snapshot = await get(ref(db, "users"));
+const dat = snapshot.val();
+console.log(dat)
+
+U - Update
+update(ref(db, "users/userId"), {
+    name: "Thakur Kaushal Singh"
+})
+
+D - Delete 
+remove(ref(db, "users/names"));
